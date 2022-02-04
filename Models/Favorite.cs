@@ -2,30 +2,24 @@
 {
     public class Favorite
     {
-        public int Id { get; set; }
-        private List<Favorite> _Favorite { get; set; }
+        public List<int> Id = new List<int>();
+
 
         public void InsertFavorite(int id)
         {
-            var _objFavorite = new Favorite();
-            _Favorite = new List<Favorite>();
-
-            _objFavorite = new Favorite() { Id = id };
-            _Favorite.Add(_objFavorite);
+            Id.Add(id);
 
         }
 
-        public  void DeleteFavorite(int id)
+        public void DeleteFavorite(int id)
         {
-            var _objFavorite = new Favorite();
-            _Favorite = new List<Favorite>();
+            Id.Remove(id);
 
-            _Favorite.Remove(_objFavorite);
         }
 
-        public List<Favorite> ReturnFavorite()
+        public List<int> ReturnFavorite()
         {
-            return _Favorite;
+            return Id;
         }
 
     }

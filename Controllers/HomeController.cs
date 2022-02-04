@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Text;
 
+
 namespace MarvelMasterApi.Controllers
 {
     public class HomeController : Controller
@@ -20,71 +21,22 @@ namespace MarvelMasterApi.Controllers
 
         public IActionResult Index([FromServices] IConfiguration config)
         {
-            //Personagem personagem;
 
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(
-                    new MediaTypeWithQualityHeaderValue("application/json"));
+            RetornoIndex retorno1 = new RetornoIndex();
+            retorno1 = DataContoller.Dados();
 
-                // parametros da url
+            // Parametros para view
 
-                string ts = "1642539689";
-                string publicKey = "89737e2b5be01e946ade4173055a5522";
-                string hash = "2cd7277ab38669204ee5f5758d7e8037";
-                string url = "http://gateway.marvel.com/v1/public/";
-                int limit = 20;
-                string linkUrl = url + "characters?ts=" + ts + "&apikey=" + publicKey + "&hash=" + hash + "&limit=" + limit;
-
-                HttpResponseMessage response = client.GetAsync(linkUrl).Result;
-                          
-                response.EnsureSuccessStatusCode();
-                string conteudo = response.Content.ReadAsStringAsync().Result;
-
-                dynamic resultado = JsonConvert.DeserializeObject(conteudo);
-
-                int[] arrayPersonagemID = new int[limit];
-                string[] arrayPersonagemNome = new string[limit];
-                string[] arrayPersonagemDescricao = new string[limit];
-                
-                string stringName = "";
-                string stringDescription= "";
-
-                Personagem _personagens = new Personagem();
-
-                for (int i= 0; i < limit; i++)
-                {
-                    stringName = resultado.data.results[i].name;
-                    stringDescription = resultado.data.results[i].description;
-
-                    _personagens.CriarPersonagem(i, stringName, stringDescription);
-
-                    arrayPersonagemID[i] = i;
-                    arrayPersonagemNome[i] = stringName;
-                    arrayPersonagemDescricao[i] = stringDescription;
-                }
-
-                BlackList _blacklist = new BlackList();
-                _blacklist.InsertBackList(2);
-                _blacklist.InsertBackList(3);
-                _blacklist.ReturnBlackList();
-
-                Favorite _favorite = new Favorite();
-                _favorite.InsertFavorite(2);
-                _favorite.InsertFavorite(3);
-                _favorite.ReturnFavorite();
+            ViewBag.limit = retorno1.limit;
+            ViewBag.fav = retorno1.fav;
+            ViewBag.black = retorno1.black;
+            ViewBag.pId = retorno1.arrayPersonagemID;
+            ViewBag.pNome = retorno1.arrayPersonagemNome;
+            ViewBag.pDesc = retorno1.arrayPersonagemDescricao;
 
 
-            }
+            return View("Views/Home/Index.cshtml");
 
-            return View();
-        }
-
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -8,7 +8,6 @@ namespace MarvelMasterApi.Controllers
         // GET: ListCharacter
         public ActionResult Index()
         {
-            
             return View();
         }
 

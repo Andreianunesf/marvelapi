@@ -15,8 +15,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\AS Informática\source\repos\MarvelMasterApi
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/AS Informática/source/repos/MarvelMasterApi/Views/Blacklist/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxhY2tsaXN0XEluZGV4LmNzaHRtbA==
+[C:/Users/AS Informática/source/repos/MarvelMasterApi/Views/BlackList/BlackList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxhY2tMaXN0XEJsYWNrTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AS Informática/source/repos/MarvelMasterApi/Views/Favorite/Favorite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmF2b3JpdGVcRmF2b3JpdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AS Informática/source/repos/MarvelMasterApi/Views/Groups/Groups.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JvdXBzXEdyb3Vwcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/AS Informática/source/repos/MarvelMasterApi/Views/Home/Index.cshtml]

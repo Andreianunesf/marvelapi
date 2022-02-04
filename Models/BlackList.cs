@@ -2,24 +2,18 @@
 {
     public class BlackList
     {
-        public int Id { get; set; }
-        public List<BlackList> _BlackList { get; set; }
+        public List<int> Id = new List<int>();
+
 
         public void InsertBackList(int id)
         {
-            
-            var _objBlackList = new BlackList();
-            _BlackList = new List<BlackList>();
-
-            _objBlackList = new BlackList() { Id = id };
-            _BlackList.Add(_objBlackList);
+                Id.Add(id);
 
         }
-        public List<BlackList> ReturnBlackList()
+        public List<int> ReturnBlackList()
         {
-            return _BlackList;
+            return Id;
         }
 
     }
 }
-
