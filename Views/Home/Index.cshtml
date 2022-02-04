@@ -10,22 +10,22 @@
             <th>ID</th>
             <th>Personagem</th>
             <th>Descrição</th>
+            <th>Idade</th>
         </tr>
     </thead>
     <tbody>
 
         @{
-            var cont = 0;
 
-            for (int i = 0; i < ViewBag.limit; i++)
+            for (int i = 0; i < ViewBag.pId.Count; i++)
             {
                 <tr class=".itemTecnico">
                     <td> @ViewBag.pId[i] </td>
                     <td> @ViewBag.pNome[i] </td>
                     <td> @ViewBag.pDesc[i] </td>
+                    <td> @ViewBag.pIdade[i] </td>
                 </tr>
 
-                cont++;
             }
         }
 

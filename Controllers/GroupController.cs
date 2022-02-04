@@ -16,7 +16,7 @@ namespace MarvelMasterApi.Controllers
             ViewBag.pDesc = groupRetorno.arrayPersonagemDescricao;
             ViewBag.limit = groupRetorno.limit;
 
-            return View("Views/Groups/Groups.cshtml");
+            return View("Views/Group/Group.cshtml");
         }
     }
 }

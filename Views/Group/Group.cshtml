@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Group";
+}
+
+<div class="text-center">
+
+    <table width="100%" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Grupo</th>
+            <th>Id Personagem</th>
+            <th>Nome Personagem</th>
+            <th>Descrição</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            @{
+            
+                for(int i = 0; i < @ViewBag.group.Count; i++)
+                {
+
+                     for(int j = 0; j < @ViewBag.group[i].itens.Count; j++)
+                     {
+                         <tr class=".itemTecnico">
+                                <td> @ViewBag.group[i].name </td>
+                                <td> @ViewBag.group[i].itens[j] </td>
+                                <td> @ViewBag.pNome[j] </td>
+                                <td> @ViewBag.pDesc[j] </td>
+                         </tr>
+                    
+                     }
+                    
+                }
+               
+             }
+         
+    </tbody>
+</table>
+
+</div>
+
+
+@*if (@ViewBag.pId[i] == @ViewBag.fav[j])
+                        {
+                            <tr class=".itemTecnico">
+                                <td> @ViewBag.pId[i] </td>
+                                <td> @ViewBag.pNome[i] </td>
+                                <td> @ViewBag.pDesc[i] </td>
+                            </tr>
+                        }*@

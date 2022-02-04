@@ -14,22 +14,31 @@ namespace MarvelMasterApi.Controllers
             int[] arrayPersonagemID = new int[limit];
             string[] arrayPersonagemNome = new string[limit];
             string[] arrayPersonagemDescricao = new string[limit];
+            string[] arrayIdade = new string[limit];
+            int[] intArrayIdade = new int[limit];
 
             string stringName = "";
             string stringDescription = "";
+            string stringIdade = "";
+            
 
             Personagem _personagens = new Personagem();
+            Age idade = new Age();
 
             for (int i = 0; i < limit; i++)
             {
                 stringName = resultado.data.results[i].name;
                 stringDescription = resultado.data.results[i].description;
-
+                stringIdade = resultado.data.results[i].modified;
                 _personagens.CriarPersonagem(i, stringName, stringDescription);
 
                 arrayPersonagemID[i] = i;
                 arrayPersonagemNome[i] = stringName;
                 arrayPersonagemDescricao[i] = stringDescription;
+                arrayIdade[i] = stringIdade;
+                intArrayIdade[i] = idade.ReturnIdade(stringIdade);
+
+
             }
 
             // teste black list 
@@ -39,6 +48,10 @@ namespace MarvelMasterApi.Controllers
             blackList.InsertBackList(2);
             blackList.InsertBackList(3);
             List<int> black = blackList.ReturnBlackList();
+
+            List<int> personagensValidos = new List<int>();
+
+            personagensValidos = blackList.ExceptBlackList(arrayPersonagemID, black);
 
             // teste favoritos
 
@@ -58,15 +71,19 @@ namespace MarvelMasterApi.Controllers
             group.CreateGroup("grupo1", personagensGroup);
             List<Group> grupo1 = group.ReturnGroup();
 
-            RetornoIndex retorno1 = new RetornoIndex();
 
+
+            RetornoIndex retorno1 = new RetornoIndex();
             retorno1.limit = limit;
+            retorno1.personagensValidos = personagensValidos;
+            retorno1.arrayIdade = intArrayIdade;
             retorno1.fav = fav;
             retorno1.black = black;
             retorno1.arrayPersonagemID = arrayPersonagemID;
             retorno1.arrayPersonagemNome = arrayPersonagemNome;
             retorno1.arrayPersonagemDescricao = arrayPersonagemDescricao;
             retorno1.groups = grupo1;
+
 
             return retorno1;
 
